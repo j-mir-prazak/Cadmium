@@ -53,6 +53,14 @@ if [ "$BASEBOARD" = "trogdor" ]; then
 	make -j$(nproc) -C /CdFiles/rmtfs install prefix=/usr
 	echo rmtfs >> /CdFiles/installed_progs
 
+
+	## making it stick  ##
+	######################
+	systemctl unmask rmtfs
+	systemctl enable rmtfs
+	######################
+
+
 	systemctl start rmtfs # TODO: make this work on voidlinux
 	sleep 10 # wait for ath10k_snoc to do its thing
 fi
@@ -137,3 +145,4 @@ fi
 
 if [ "$FS_HAS_OOBE" = "false" ]; then
 fi
+
