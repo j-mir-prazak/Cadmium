@@ -1,9 +1,9 @@
 #!/bin/bash
 CADMIUMROOT=$(dirname $(realpath $0))
 
-. $CADMIUMROOT/config
-. $CADMIUMROOT/board/$TARGET/boardinfo
-. $CADMIUMROOT/baseboard/$BASEBOARD/boardinfo
+source $CADMIUMROOT/config
+source $CADMIUMROOT/board/$TARGET/boardinfo
+source $CADMIUMROOT/baseboard/$BASEBOARD/boardinfo
 
 set -e
 

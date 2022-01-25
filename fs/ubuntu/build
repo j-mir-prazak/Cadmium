@@ -1,3 +1,4 @@
+#!/bin/bash
 # start of install-to-emmc-middle
 CADMIUMROOT=$(dirname $(dirname $(dirname $(realpath $0))))
 DESTDIR=$1
@@ -9,7 +10,7 @@ export EUDEV=0
 set -x
 set -e
 
-. $CADMIUMROOT/config
+source $CADMIUMROOT/config
 
 debootstrap --arch=$ARCH_DEB $SUITE $DESTDIR || true
 
