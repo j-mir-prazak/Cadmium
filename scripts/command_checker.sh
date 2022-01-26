@@ -1,4 +1,5 @@
 #!/bin/bash
+#intention: check if all command have actual path - if not, yell before build-all starts
 
 which fallocate
 which parted

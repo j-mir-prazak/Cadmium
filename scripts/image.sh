@@ -51,4 +51,4 @@ fi
 sync
 
 partx -a $DEVICE >/dev/null 2>&1 || true # fails if something else added partitions 
-#losetup -d $DEVICE
+losetup -d $DEVICE
