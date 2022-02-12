@@ -1,0 +1,35 @@
+#!/bin/bash
+# start of install-to-emmc-middle
+CADMIUMROOT=$(dirname $(dirname $(dirname $(realpath $0))))
+DESTDIR=$1
+
+
+export SYSTEMD=1
+export EUDEV=0
+
+set -x
+set -e
+
+source $CADMIUMROOT/config
+bsdtar -xpf /home/ubuntu/Downloads/ArchLinuxARM-aarch64-latest.tar.gz -C $DESTDIR
+#debootstrap --arch=$ARCH_DEB $SUITE $DESTDIR || true
+
+#chroot $DESTDIR echo "deb http://ports.ubuntu.com/ubuntu-ports/ $SUITE-updates main restricted universe multiverse" >> $DESTDIR/etc/apt/sources.list
+#chroot $DESTDIR echo "deb http://ports.ubuntu.com/ubuntu-ports/ $SUITE-security main restricted universe multiverse" >> $DESTDIR/etc/apt/sources.list
+#chroot $DESTDIR echo "deb http://ports.ubuntu.com/ubuntu-ports/ $SUITE-backports main restricted universe multiverse" >> $DESTDIR/etc/apt/sources.list
+#chroot $DESTDIR echo "deb http://ports.ubuntu.com/ubuntu-ports/ $SUITE-proposed main restricted universe multiverse" >> $DESTDIR/etc/apt/sources.list
+
+# install packages needed to get wifi working and to be ready to compile stuff
+#chroot $DESTDIR apt update
+#chroot $DESTDIR apt -y dist-upgrade
+#chroot $DESTDIR apt install -y git build-essential network-manager locales sudo vim libudev-dev console-setup
+
+# this is last, because if user walks away during install they go back,
+# configure their system and have it ready immediately
+#chroot $DESTDIR dpkg-reconfigure tzdata
+#chroot $DESTDIR dpkg-reconfigure locales
+#chroot $DESTDIR dpkg-reconfigure console-setup
+
+#chroot $DESTDIR
+
+# end of install-to-emmc-middle

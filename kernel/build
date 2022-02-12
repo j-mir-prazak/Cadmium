@@ -17,8 +17,8 @@ if [ "$(date +'%V%y') $KERNEL" != "$(cat kern-dl-date-$ARCH 2>/dev/null)" ]; the
 	rm -rf linux-$ARCH
     
     #if custom url added, download it
-    if [[ ! -z $1 ]]; then
-
+    if [[ ! -z $1 ]] && [[ "$1" != "" ]]; then
+        echo "DOWNLOADING CUSTOM KERNEL." 
         curl -L "$1" -o Linux-archive
 
 	elif [ $KERNEL = libre ]; then
@@ -42,7 +42,7 @@ fi
 cd $CADMIUMROOT/tmp/linux-$ARCH
 
 [ -f .config ] || cp $CADMIUMROOT/kernel/config.$ARCH .config
-
+[ -f $CADMIUMROOT/config.kernel ] && cp $CADMIUMROOT/config.kernel .config  
 #if [ $KERNEL = libre ]; then
 	# it looks better this way
 	#sed -i'' 's/cadmium/-cadmium/' .config

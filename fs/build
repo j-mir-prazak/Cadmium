@@ -68,4 +68,4 @@ git clone https://github.com/andersson/qrtr.git $DESTDIR/CdFiles/qrtr
 git clone https://github.com/Maccraft123/rmtfs.git $DESTDIR/CdFiles/rmtfs
 
 # get rid of any root password
-chroot $DESTDIR passwd -d root
+#chroot $DESTDIR passwd -d root
