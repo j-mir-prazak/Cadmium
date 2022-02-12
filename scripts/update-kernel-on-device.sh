@@ -19,6 +19,6 @@ mkdir -p /tmp/mount_update
 mount "$DEVICE"p3 /tmp/mount_update
 
 dd if=$DIR/oxide.kpart of=/tmp/mount_update/oxide.kpart
-cp -r $DIR/modules /tmp/mount_update/
+cp -r $DIR/modules/lib/modules/* /tmp/mount_update/lib/modules/
 
 umount /tmp/mount_update
