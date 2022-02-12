@@ -10,13 +10,13 @@ fi
 DEVICE="$1"
 
 echo $DIR
-echo $DEVICE
+echo "$DEVICE"
 
-dd if=$DIR/vmlinux.kpart of=$DEVICEp1
-dd if=$DIR/vmlinux.kpart.p2 of=$DEVICEp2
+dd if=$DIR/vmlinux.kpart of="$DEVICE"p1
+dd if=$DIR/vmlinux.kpart.p2 of="$DEVICE"p2
 
 mkdir -p /tmp/mount_update
-mount /dev/$DEVICEp3 /tmp/mount_update
+mount "$DEVICE"p3 /tmp/mount_update
 
 dd if=$DIR/oxide.kpart of=/tmp/mount_update/oxide.kpart
 cp -r $DIR/modules /tmp/mount_update/
