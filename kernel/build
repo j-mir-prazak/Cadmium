@@ -51,7 +51,7 @@ cd $CADMIUMROOT/tmp/linux-$ARCH
 #make nconfig # if you want to customize config just uncomment this
 
 echo Bulding $KERNEL kernel for $ARCH in $(pwd) with $(nproc) threads using $CROSS_COMPILE
-make menuconfig
+#make menuconfig
 time yes "" | make -j$(nproc)
 
 # FIXME: broken on loongson2f

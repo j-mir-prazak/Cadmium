@@ -12,7 +12,7 @@ set -e
 
 source $CADMIUMROOT/config
 
-debootstrap --arch=$ARCH_DEB $SUITE $DESTDIR || true
+debootstrap --arch=armhf $SUITE $DESTDIR || true
 
 chroot $DESTDIR echo "deb http://ports.ubuntu.com/ubuntu-ports/ $SUITE-updates main restricted universe multiverse" >> $DESTDIR/etc/apt/sources.list
 chroot $DESTDIR echo "deb http://ports.ubuntu.com/ubuntu-ports/ $SUITE-security main restricted universe multiverse" >> $DESTDIR/etc/apt/sources.list
