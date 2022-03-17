@@ -1,0 +1,26 @@
+#!/bin/bash
+# start of install-to-emmc-middle
+CADMIUMROOT=$(dirname $(dirname $(dirname $(realpath $0))))
+DESTDIR=$1
+
+
+export SYSTEMD=1
+export EUDEV=0
+
+set -x
+set -e
+
+source $CADMIUMROOT/config
+
+rsync -av --numeric-ids /tmp/mount/root/ $DESTDIR
+
+# install packages needed to get wifi working and to be ready to compile stuff
+
+# this is last, because if user walks away during install they go back,
+# configure their system and have it ready immediately
+
+for i in /dev /proc /sys; do mount --rbind $i $DESTDIR/$i; done
+
+chroot $DESTDIR dnf -y install make automake gcc gcc-c++ kernel-devel 
+
+for i in /dev /proc /sys; do umount $DESTDIR/$i; done

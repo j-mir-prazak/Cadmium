@@ -48,4 +48,4 @@ fi
 
 sync
 
-partx -a $DEVICE >/dev/null 2>&1 || true # fails if something else added partitions 
+kpartx -a -s $DEVICE >/dev/null 2>&1 || true # fails if something else added partitions 
